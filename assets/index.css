@@ -1,0 +1,66 @@
+.container {
+    background-color: rgb(242 242 242);
+    height: 90vh;
+    max-width: 90vw;
+    padding: 10% 13%;
+    margin-top: 5vh;
+}
+
+.container-end {
+    display: flex;
+    justify-content: end;
+    padding-bottom: 35px;
+}
+
+button {
+    border-radius: 3px!important;
+    border: none;
+}
+
+button.success {
+    background-color: #40b44d;
+    padding: 10px 50px;
+    font-weight: 500;
+    color: white;
+}
+
+button.secondary {
+    background-color: #c2c2c2;
+    padding: 2px;
+    width: 47%;
+    font-size: 0.7rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    color: #e7e7e7;
+}
+
+table {
+    width: 100%;
+    background-color: white;
+    text-transform: uppercase;
+    border: 1px solid #eaeaea;
+}
+
+th, td {
+    border-left: 1px solid #eaeaea;
+    border-right: 1px solid #eaeaea;
+}
+
+th {
+    border-bottom: 1px solid #eaeaea;
+    text-align: center;
+    padding: 15px;
+    font-size: 0.8rem;
+    color: #757575;
+}
+
+td {
+    padding: 10px 15px;
+    color: #adadad;
+    font-size: 0.8rem;
+    font-weight: 500;
+}
+
+.actions {
+    width: 10%;
+}
