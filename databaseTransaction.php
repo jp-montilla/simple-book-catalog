@@ -58,5 +58,9 @@ class DatabaseTransaction {
         return $result;
     }
     
+    public function delete($id) {
+        $result = mysqli_query($this->connection, "DELETE FROM books WHERE id = $id");
+        return $result;
+    }
 }
 ?>
