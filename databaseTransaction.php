@@ -42,6 +42,21 @@ class DatabaseTransaction {
         $last_id = mysqli_insert_id($this->connection);
         return $last_id;
     }
+
+    public function update($data) {
+        $id = $data['id'];
+        $title = $data['title'];
+        $isbn = $data['isbn'];
+        $author = $data['author'];
+        $publisher = $data['publisher'];
+        $year_published = $data['year_published'];
+        $category = $data['category'];
+        $result = mysqli_query(
+            $this->connection,
+            "UPDATE books set title='$title', isbn='$isbn', author='$author', publisher='$publisher',year_published='$year_published', category='$category' WHERE id = $id"
+        );
+        return $result;
+    }
     
 }
 ?>

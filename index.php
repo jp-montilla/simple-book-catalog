@@ -211,6 +211,52 @@
         });
     });
 
+    // EDIT BOOK
+    $(document).on('click', '#editBook', function(){
+        id = $(this).attr('value');
+        fields = [];
+        // Fill input fields
+        $('#bookId'+$(this).attr('value')+' > td').each(function(){
+            if (typeof $(this).data('name') !== "undefined") {
+                fields[$(this).data('name')] = $(this).attr('value');
+            }
+            fields[$(this).data('name')] = $(this).attr('value');
+            fields['id'] = id;
+        });
+        // console.log(fields);
+        $('#editBookForm :input').each(function () { 
+            this.value = fields[this.name];
+        }); 
+    });
+
+    $('#editBookFormSubmit').click(function() {
+        validated = validateInput('editBookForm')
+        if (validated) {
+            $('#editBookForm').submit();
+        } else {
+            alert('All fields are required');
+        }
+    });
+
+    $('#editBookForm').submit(function(e) {
+        e.preventDefault();
+        queryString = $('#editBookForm').serialize();
+        console.log(queryString);
+        $.ajax({
+            type: "POST",
+            url: "update.php",
+            data: queryString,
+            success: function (response) {
+                response = jQuery.parseJSON(response);
+                $('#editBookModal').modal('toggle');
+                $('#editBookForm').trigger('reset');
+                $('#bookId'+response['id']).html(fillTableRow(response));
+                displayMessage('Book updated successfully');
+                hideMessage();
+            }
+        });
+    });
+
 
     function fillTableRow(response) {
         html =  '<td id="td-title'+response['id']+'" value="'+response['title']+'" data-name="title">'+response['title']+'</td>'+
