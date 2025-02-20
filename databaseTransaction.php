@@ -2,7 +2,7 @@
 define('DB_SERVER','localhost');
 define('DB_USER','root');
 define('DB_PASS' ,'');
-define('DB_NAME', 'simple_book_catalog');
+define('DB_NAME', 'book_catalog');
 
 
 class DatabaseTransaction {
