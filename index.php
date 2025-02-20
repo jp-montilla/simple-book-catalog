@@ -178,6 +178,21 @@
         });
     });
 
+
+    function fillTableRow(response) {
+        html =  '<td id="td-title'+response['id']+'" value="'+response['title']+'" data-name="title">'+response['title']+'</td>'+
+                '<td id="td-isbn'+response['id']+'" value="'+response['isbn']+'" data-name="isbn">'+response['isbn']+'</td>'+
+                '<td id="td-author'+response['id']+'" value="'+response['author']+'" data-name="author">'+response['author']+'</td>'+
+                '<td id="td-publisher'+response['id']+'" value="'+response['publisher']+'" data-name="publisher">'+response['publisher']+'</td>'+
+                '<td id="td-year'+response['id']+'" value="'+response['year_published']+'" data-name="year_published">'+response['year_published']+'</td>'+
+                '<td id="td-category'+response['id']+'" value="'+response['category']+'" data-name="category">'+response['category']+'</td>'+
+                '<td class="actions">'+
+                    '<button id="editBook" class="btn btn-secondary border-0 secondary" value="'+response['id']+'"  data-toggle="modal" data-target="#editBookModal">Edit</button>'+
+                    '<button id="deleteBook" class="btn btn-secondary border-0 secondary" value="'+response['id']+'"  data-toggle="modal" data-target="#deleteBookModal">Del</button>'+
+                '</td>';
+        return html;
+    }
+
 </script>
 </body>
 </html>
