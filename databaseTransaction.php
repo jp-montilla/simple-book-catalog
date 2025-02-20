@@ -32,5 +32,16 @@ class DatabaseTransaction {
             echo json_encode($result_array);
         }
 	}
+
+    public function insert($title, $isbn, $author, $publisher, $year_published, $category) {
+        $result = mysqli_query(
+            $this->connection,
+            "INSERT INTO books(title, isbn, author, publisher, year_published, category) VALUES
+            ('$title', '$isbn','$author', '$publisher','$year_published', '$category')"
+        );
+        $last_id = mysqli_insert_id($this->connection);
+        return $last_id;
+    }
+    
 }
 ?>
