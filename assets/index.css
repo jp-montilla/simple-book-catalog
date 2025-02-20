@@ -9,6 +9,9 @@
 .container-end {
     display: flex;
     justify-content: end;
+}
+
+.pb-35 {
     padding-bottom: 35px;
 }
 
@@ -27,6 +30,7 @@ button.success {
 button.secondary {
     background-color: #c2c2c2;
     padding: 2px;
+    margin: 0 1px;
     width: 47%;
     font-size: 0.7rem;
     font-weight: 500;
@@ -63,4 +67,12 @@ td {
 
 .actions {
     width: 10%;
+}
+
+.d-none {
+    display: none;
+}
+
+.d-block {
+    display: block;
 }
