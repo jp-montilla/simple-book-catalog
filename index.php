@@ -178,6 +178,39 @@
         });
     });
 
+    // ADD BOOK
+    $('#addBookFormSubmit').click(function() {
+        validated = validateInput('addBookForm')
+        if (validated) {
+            $('#addBookForm').submit();
+        } else {
+            alert('All fields are required');
+        }
+    });
+
+    $('#addBookForm').submit(function(e) {
+        e.preventDefault();
+        queryString = $('#addBookForm').serialize();
+        $.ajax({
+            type: "POST",
+            url: "insert.php",
+            data: queryString,
+            success: function (response) {
+                response = jQuery.parseJSON(response);
+                console.log(response);
+                $('#addBookModal').modal('toggle');
+                $('#addBookForm').trigger('reset');
+
+                html = '<tr id="bookId'+response['id']+'">';
+                html += fillTableRow(response);
+                html += '</tr>'
+                $('#booksTableBody').append(html);
+                displayMessage('Book added successfully');
+                hideMessage();
+            }
+        });
+    });
+
 
     function fillTableRow(response) {
         html =  '<td id="td-title'+response['id']+'" value="'+response['title']+'" data-name="title">'+response['title']+'</td>'+
@@ -191,6 +224,28 @@
                     '<button id="deleteBook" class="btn btn-secondary border-0 secondary" value="'+response['id']+'"  data-toggle="modal" data-target="#deleteBookModal">Del</button>'+
                 '</td>';
         return html;
+    }
+
+    function validateInput(formId) {
+        valid = true
+        $('#'+formId+' :input').each(function () {
+            if (this.value === '') {
+                valid = false;
+            }
+        });
+        return valid;
+    }
+
+    function displayMessage(message) {
+        $('#success-message > span').text(message)
+        $('#success-message').removeClass('d-none').addClass('d-block')
+
+    }
+
+    function hideMessage() {
+        setTimeout(function() {
+            $('#success-message').removeClass('d-block').addClass('d-none');
+        }, 3000);
     }
 
 </script>
