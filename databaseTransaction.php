@@ -2,7 +2,7 @@
 define('DB_SERVER','localhost');
 define('DB_USER','root');
 define('DB_PASS' ,'');
-define('DB_NAME', 'simple_book_catalog');
+define('DB_NAME', 'book_catalog');
 
 
 class DatabaseTransaction {
@@ -58,5 +58,9 @@ class DatabaseTransaction {
         return $result;
     }
     
+    public function delete($id) {
+        $result = mysqli_query($this->connection, "DELETE FROM books WHERE id = $id");
+        return $result;
+    }
 }
 ?>
